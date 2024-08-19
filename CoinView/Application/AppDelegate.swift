@@ -14,6 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        // Регистрация сервисов
+        let networkService = CoinNetworkServiceImpl()
+        let repository = CoinRepositoryImpl(service: networkService)
+
+        ServiceLocator.shared.register(service: networkService as CoinNetworkService)
+        ServiceLocator.shared.register(service: repository as CoinRepository)
+
         return true
     }
 
