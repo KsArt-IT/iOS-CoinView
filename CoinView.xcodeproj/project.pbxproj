@@ -14,8 +14,8 @@
 		F14EA5E42C733F6700687ADA /* Exceptions for "CoinView" folder in "CoinView" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"/Localized: Controllers/Main/Main.storyboard",
 				"/Localized: Views/LaunchScreen.storyboard",
+				"/Localized: Views/Main/Main.storyboard",
 				Resources/Info.plist,
 			);
 			target = F14EA5D12C733F6500687ADA /* CoinView */;
@@ -27,8 +27,8 @@
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = F14EA5D02C733F6500687ADA /* Resources */;
 			membershipExceptions = (
-				Controllers/Main/Base.lproj/Main.storyboard,
 				Views/Base.lproj/LaunchScreen.storyboard,
+				Views/Main/Base.lproj/Main.storyboard,
 			);
 		};
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */

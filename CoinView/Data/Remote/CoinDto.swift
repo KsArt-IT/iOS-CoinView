@@ -17,7 +17,7 @@ struct CoinDto: Decodable {
 
 extension CoinDto {
     
-    func toCoin() -> Coin {
+    func mapToDomain() -> Coin {
         Coin(id: self.id, isActive: self.isActive, name: self.name, rank: self.rank, symbol: self.symbol)
     }
 }

@@ -9,24 +9,30 @@ import Foundation
 
 final class CoinNetworkServiceImpl: CoinNetworkService {
 
-    func loadData<T>(endpoint: CoinEndpoint, callback: @escaping (Result<T, Error>) -> Void) where T : Decodable {
-        executeRequest(endpoint: endpoint) { data in
-            if let result: T = self.decode(from: data) {
-                callback(.success(result))
-            } else {
-                callback(.failure(NetworkError.invalidData))
-            }
-        } errorData: { error in
-            callback(.failure(error))
-        }
+    func loadData(url: String, completion: @escaping (Data) -> Void) {
+        guard let url = URL(string: url) else { return }
+
+        executeRequest(url: url, successData: completion, errorData: { _ in })
     }
 
-    private func executeRequest(endpoint: CoinEndpoint, decodeData: @escaping (Data) -> Void, errorData: @escaping (Error) -> Void) {
+    func loadData<T>(endpoint: CoinEndpoint, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable {
         guard let url = endpoint.url else {
-            errorData(NetworkError.invalidURL)
+            completion(.failure(NetworkError.invalidURL))
             return
         }
 
+        executeRequest(url: url) { data in
+            if let result: T = self.decode(from: data) {
+                completion(.success(result))
+            } else {
+                completion(.failure(NetworkError.invalidData))
+            }
+        } errorData: { error in
+            completion(.failure(error))
+        }
+    }
+
+    private func executeRequest(url: URL, successData: @escaping (Data) -> Void, errorData: @escaping (Error) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
 
@@ -41,7 +47,7 @@ final class CoinNetworkServiceImpl: CoinNetworkService {
                 return
             }
 
-            decodeData(data)
+            successData(data)
         }.resume()
     }
 

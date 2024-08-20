@@ -5,7 +5,7 @@
 //  Created by KsArT on 19.08.2024.
 //
 
-struct Coin {
+public struct Coin {
     let id: String
     let isActive: Bool
     let name: String

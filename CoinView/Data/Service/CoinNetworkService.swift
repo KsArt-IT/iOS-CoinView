@@ -9,5 +9,6 @@ import Foundation
 
 protocol CoinNetworkService {
 
-    func loadData<T>(endpoint: CoinEndpoint, callback: @escaping (Result<T, Error>) -> Void) where T : Decodable
+    func loadData<T>(endpoint: CoinEndpoint, completion: @escaping (Result<T, any Error>) -> Void) where T : Decodable
+    func loadData(url: String, completion: @escaping (Data) -> Void)
 }

@@ -8,5 +8,7 @@
 import Foundation
 
 protocol CoinRepository: AnyObject {
-    func fetchData(endpoint: CoinEndpoint, callback: @escaping (Result<[Coin], any Error>) -> Void)
+    func fetchCoins(completion: @escaping (Result<[Coin], any Error>) -> Void)
+    func fetchCoinDetail(id: String, completion: @escaping (Result<CoinDetail, any Error>) -> Void)
+    func fetchCoinLogo(id: String, completion: @escaping (Data) -> Void)
 }

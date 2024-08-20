@@ -9,7 +9,7 @@ import Foundation
 
 enum CoinEndpoint {
     case coins
-    case coin(id: Int)
+    case coin(id: String)
 
     var url: URL? {
         switch self {
