@@ -15,6 +15,12 @@ class MainViewController: UIViewController {
 
     private var coins: [Coin] = []
     private var coinsLogo: [String:UIImage] = [:]
+    // pull to refresh
+    private let refreshControl: UIRefreshControl = {
+        let view = UIRefreshControl()
+        view.attributedTitle = NSAttributedString(string: "Updating...")
+        return view
+    }()
     private let repository: CoinRepository? = ServiceLocator.shared.resolve()
 
     override func viewDidLoad() {
@@ -28,6 +34,12 @@ class MainViewController: UIViewController {
         loading.hidesWhenStopped = true
         coinsTable.delegate = self
         coinsTable.dataSource = self
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+        coinsTable.refreshControl = refreshControl
+    }
+
+    @objc private func handleRefreshControl() {
+        loadData()
     }
 
 }
@@ -37,6 +49,7 @@ private extension MainViewController {
 
     private func loadData() {
         loading.startAnimating()
+        refreshControl.beginRefreshing()
         repository?.fetchCoins() { [weak self] result in
             self?.loading.stopAnimating()
             switch result {
@@ -46,6 +59,7 @@ private extension MainViewController {
                 case .failure(let error):
                     self?.showAlert(title: "Error", message: error.localizedDescription)
             }
+            self?.refreshControl.endRefreshing()
         }
     }
 
@@ -56,7 +70,7 @@ private extension MainViewController {
             completion(image)
         } else {
             repository?.fetchCoinLogo(id: id) { [weak self] data in
-                guard let self, let image = UIImage(data: data)?.resize(32) else { return }
+                guard let self, let image = UIImage(data: data)?.resize(64) else { return }
                 self.coinsLogo[id] = image
                 completion(image)
             }
@@ -85,15 +99,22 @@ extension MainViewController: UITableViewDataSource {
         cell.textLabel?.text = coin.name
         cell.detailTextLabel?.text = "\(coin.rank) (\(coin.symbol))"
         cell.backgroundColor = (coin.isActive ? UIColor.green : UIColor.red).withAlphaComponent(0.5)
-        cell.imageView?.image = UIImage(systemName: "dollarsign")
 
-        loadLogo(id: coin.id) { [weak self, weak cell, indexPath] image in
-            guard let self, let cell else { return }
+        // подставляем логотип coin
+        let image = coinsLogo[coin.id]
+        cell.imageView?.image = image
+        if image == nil {
+            // поставим заглушку
+            cell.imageView?.image = UIImage(named: "Coin")
+            // загрузим логотип из сети и обновим ячейку
+            loadLogo(id: coin.id) { [weak self, weak cell, indexPath] image in
+                guard let self, let cell else { return }
 
-            cell.imageView?.image = image
-            self.coinsTable.reloadRows(at: [indexPath], with: .fade)
+                cell.imageView?.image = image
+                self.coinsTable.reloadRows(at: [indexPath], with: .fade)
+            }
         }
-        
+
         return cell
     }
 
