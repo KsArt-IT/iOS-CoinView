@@ -42,12 +42,21 @@ class MainViewController: UIViewController {
         loadData()
     }
 
+    private func showCoinDetailScreen(id: String) {
+        // переход к CoinDetail.storyboard
+        let storyboard = UIStoryboard(name: "CoinDetail", bundle: nil)
+        // находим на storyboard нужный контроллер по его идентификатору
+        let vc = storyboard.instantiateViewController(withIdentifier: "CoinDetailViewController")
+        (vc as? CoinIdDelegate)?.setCoinId(id)
+        // переходим
+        present(vc, animated: true)
+    }
 }
 
 // MARK: - Loading data for table
 private extension MainViewController {
 
-    private func loadData() {
+    func loadData() {
         loading.startAnimating()
         refreshControl.beginRefreshing()
         repository?.fetchCoins() { [weak self] result in
@@ -63,7 +72,7 @@ private extension MainViewController {
         }
     }
 
-    private func loadLogo(id: String, completion: @escaping (UIImage) -> Void) {
+    func loadLogo(id: String, completion: @escaping (UIImage) -> Void) {
         guard !id.isEmpty else { return }
 
         if let image = coinsLogo[id] {
@@ -81,6 +90,12 @@ private extension MainViewController {
 // MARK: - TableViewDelegate
 extension MainViewController: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard indexPath.row < coins.count else { fatalError("'CoinCellSID' row=\(indexPath.row) > count=\(coins.count)") }
+
+        showCoinDetailScreen(id: coins[indexPath.row].id)
+    }
 }
 
 // MARK: - TableViewDataSource
@@ -118,4 +133,9 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
 
+}
+
+protocol CoinIdDelegate {
+
+    func setCoinId(_ id: String)
 }

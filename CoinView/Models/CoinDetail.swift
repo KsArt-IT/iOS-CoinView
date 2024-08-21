@@ -13,6 +13,8 @@ public struct CoinDetail {
     let isNew: Bool
     let isActive: Bool
 
+    let logo: String
+    
     let description: String
     let firstDataAt: String
 

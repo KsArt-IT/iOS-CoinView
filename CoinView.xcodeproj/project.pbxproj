@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 76;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -11,11 +11,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F14EA5E42C733F6700687ADA /* Exceptions for "CoinView" folder in "CoinView" target */ = {
+		F14EA5E42C733F6700687ADA /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"/Localized: Views/LaunchScreen.storyboard",
-				"/Localized: Views/Main/Main.storyboard",
+				/Localized/Views/LaunchScreen.storyboard,
+				/Localized/Views/Main/Main.storyboard,
 				Resources/Info.plist,
 			);
 			target = F14EA5D12C733F6500687ADA /* CoinView */;
@@ -23,7 +23,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		F14EA5E82C733F6700687ADA /* Exceptions for "CoinView" folder in "Copy Bundle Resources" phase from "CoinView" target */ = {
+		F14EA5E82C733F6700687ADA /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = F14EA5D02C733F6500687ADA /* Resources */;
 			membershipExceptions = (
@@ -34,15 +34,7 @@
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F14EA5D42C733F6500687ADA /* CoinView */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				F14EA5E42C733F6700687ADA /* Exceptions for "CoinView" folder in "CoinView" target */,
-				F14EA5E82C733F6700687ADA /* Exceptions for "CoinView" folder in "Copy Bundle Resources" phase from "CoinView" target */,
-			);
-			path = CoinView;
-			sourceTree = "<group>";
-		};
+		F14EA5D42C733F6500687ADA /* CoinView */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F14EA5E42C733F6700687ADA /* PBXFileSystemSynchronizedBuildFileExceptionSet */, F14EA5E82C733F6700687ADA /* PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CoinView; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +55,7 @@
 				F14EA5D32C733F6500687ADA /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		F14EA5D32C733F6500687ADA /* Products */ = {
 			isa = PBXGroup;
@@ -121,7 +114,7 @@
 			);
 			mainGroup = F14EA5C92C733F6500687ADA;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 63;
 			productRefGroup = F14EA5D32C733F6500687ADA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -159,15 +152,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56FX6RXGXW;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoinView/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoinView;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -192,15 +186,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 56FX6RXGXW;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CoinView/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoinView;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -43,6 +43,7 @@ extension CoinDetailDto {
             rank: self.rank,
             isNew: self.isNew,
             isActive: self.isActive,
+            logo: self.logo ?? "",
             description: self.description,
             firstDataAt: self.firstDataAt ?? "",
             lastDataAt: self.lastDataAt ?? "",
